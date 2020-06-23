@@ -14,6 +14,8 @@
 		ACB837DB24A0011600D603AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB837D924A0011600D603AC /* Main.storyboard */; };
 		ACB837E724A0011600D603AC /* bluetoothTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837E624A0011600D603AC /* bluetoothTests.swift */; };
 		ACB837F224A0011600D603AC /* bluetoothUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB837F124A0011600D603AC /* bluetoothUITests.swift */; };
+		ACB8383F24A0FB0000D603AC /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB8383E24A0FB0000D603AC /* Scanner.swift */; };
+		ACB8384124A126FF00D603AC /* CBManagerState+asString.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB8384024A126FF00D603AC /* CBManagerState+asString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		ACB837ED24A0011600D603AC /* bluetoothUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bluetoothUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB837F124A0011600D603AC /* bluetoothUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bluetoothUITests.swift; sourceTree = "<group>"; };
 		ACB837F324A0011600D603AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACB8383E24A0FB0000D603AC /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
+		ACB8384024A126FF00D603AC /* CBManagerState+asString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CBManagerState+asString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			children = (
 				ACB837D024A0011300D603AC /* AppDelegate.swift */,
 				ACB837D224A0011300D603AC /* ContentView.swift */,
+				ACB8383E24A0FB0000D603AC /* Scanner.swift */,
+				ACB8384024A126FF00D603AC /* CBManagerState+asString.swift */,
 				ACB837D424A0011600D603AC /* Assets.xcassets */,
 				ACB837D924A0011600D603AC /* Main.storyboard */,
 				ACB837DC24A0011600D603AC /* Info.plist */,
@@ -267,7 +273,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACB837D324A0011300D603AC /* ContentView.swift in Sources */,
+				ACB8383F24A0FB0000D603AC /* Scanner.swift in Sources */,
 				ACB837D124A0011300D603AC /* AppDelegate.swift in Sources */,
+				ACB8384124A126FF00D603AC /* CBManagerState+asString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"bluetooth/Preview Content\"";
+				DEVELOPMENT_TEAM = 87KXA84V58;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = bluetooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -442,6 +451,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.dziadzka.apps.experiments.bluetooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -453,9 +463,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = bluetooth/bluetooth.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"bluetooth/Preview Content\"";
+				DEVELOPMENT_TEAM = 87KXA84V58;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = bluetooth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -463,6 +475,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = de.dziadzka.apps.experiments.bluetooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
