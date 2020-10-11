@@ -13,7 +13,7 @@ import CoreBluetooth
 
 let exposureNotificationServiceUuid = CBUUID(string: "FD6F")
 let exposureNotificationMaxAge: Double  = 15 * 60
-let exposureNotificationCurrrentAge : Double = 30
+let exposureNotificationCurrrentAge : Int = 60
 
 
 struct DeviceEntry: Comparable {
@@ -36,7 +36,7 @@ struct DeviceEntry: Comparable {
     var data: [String: Any]
     
     var isCurrent: Bool {
-        return -lastSeen.timeIntervalSinceNow < exposureNotificationCurrrentAge
+        return -lastSeen.timeIntervalSinceNow < Double(exposureNotificationCurrrentAge)
     }
     
     var isExpired: Bool {

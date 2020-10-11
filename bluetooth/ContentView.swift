@@ -73,7 +73,7 @@ struct ContentView : View {
             }
             Divider()
             List {
-                Section(header: Text("Current")) {
+                Section(header: Text("Current ( seen in the last \(exposureNotificationCurrrentAge) seconds: \(currentDeviceUUIDs.count))")) {
                     ForEach(currentDeviceUUIDs, id: \.self) { uuid in
                         DeviceView(device: self.scanner.devices[uuid]!)
                     }
