@@ -32,7 +32,7 @@ struct DeviceView : View {
     
     private var defaultColor: Color { colorScheme == .dark ? Color.white : Color.black }
     private var rssiColor: Color {
-        device.rssi > -60 ? Color.green : (device.rssi > -70 ? Color.orange : defaultColor )
+        device.rssi > -60 ? Color.green : (device.rssi > -79 ? Color.orange : defaultColor )
     }
     
     private var freshnesColor: Color {
@@ -41,11 +41,13 @@ struct DeviceView : View {
 
     var body: some View {
         HStack {
-            Text("Device: \(uuid)")
+            Text("Device: \(uuid) \(name)")
             Spacer()
-            Text("first seen: \(firstSeenAsString)")
+            Text("\(device.data)")
+            // Text("first seen: \(firstSeenAsString)")
             Text("last seen: \(lastSeenAsString)").foregroundColor(freshnesColor)
             Text("signal strength: \(device.rssi, specifier: "%.0f")").foregroundColor(rssiColor)
+            // Text("adverticement data \()")
         }
     }
 }

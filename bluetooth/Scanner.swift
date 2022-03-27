@@ -33,7 +33,7 @@ struct DeviceEntry: Comparable {
     var firstSeeen: Date
     var lastSeen: Date
     var rssi: Double
-    var data: [String: Any]
+    var advertisementData: [String: Any]
     
     var isCurrent: Bool {
         return -lastSeen.timeIntervalSinceNow < Double(exposureNotificationCurrrentAge)
@@ -41,6 +41,13 @@ struct DeviceEntry: Comparable {
     
     var isExpired: Bool {
         return -lastSeen.timeIntervalSinceNow > exposureNotificationMaxAge
+    }
+    
+    var data: String {
+        let uuids = advertisementData[CBAdvertisementDataServiceUUIDsKey] as! [CBUUID]?
+        let uuidStrings = uuids?.map { uuid in uuid.uuidString}
+        
+        return (uuidStrings ?? []).joined(separator: ", ")
     }
     
     mutating func updateLastSeen(_ lastSeen: Date) {
@@ -60,7 +67,7 @@ class Scanner: NSObject, ObservableObject, CBCentralManagerDelegate {
     
     var uuids: [String] {
         return devices.values
-            .filter({ !$0.isExpired })
+            // .filter({ !$0.isExpired })
             .sorted()
             .map { $0.uuid }
     }
@@ -84,7 +91,9 @@ class Scanner: NSObject, ObservableObject, CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             let options = [CBCentralManagerScanOptionAllowDuplicatesKey : true]
-            centralManager.scanForPeripherals(withServices: [exposureNotificationServiceUuid], options: options)
+            // let services = [exposureNotificationServiceUuid]
+            let services : [CBUUID]? = nil
+            centralManager.scanForPeripherals(withServices: services, options: options)
         }
         scannerState = central.state
     }
@@ -100,7 +109,7 @@ class Scanner: NSObject, ObservableObject, CBCentralManagerDelegate {
                 firstSeeen: Date(),
                 lastSeen: Date(),
                 rssi: Double(truncating: RSSI),
-                data: advertisementData
+                advertisementData: advertisementData
             )
         } else {
             updateLastSeen(for: uuid, withRssi: Double(truncating: RSSI))
